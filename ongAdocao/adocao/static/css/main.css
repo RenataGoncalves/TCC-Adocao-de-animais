@@ -1,0 +1,181 @@
+/*
+body{
+    background-color: #202026;
+    color: #fff;
+    font-family: sans-serif;
+}
+*/
+
+
+.card_image{    
+    height: 300px;
+    overflow: hidden;
+    width: 100%;
+    /* position: relative; */
+}
+.card_image img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+    /* position: absolute;     */
+}
+
+.box{
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  a {
+    text-decoration: none;
+
+  }
+
+  h1 {
+      font-size: 24px;
+      font-weight: 400;
+      text-align: center;
+  }
+
+  .botao{
+    background: #F7AE29;
+  }
+
+  .btn {
+    color: #eff30a;
+    padding: 0.8rem;
+    font-size: 14px;
+    /*text-transform: uppercase;*/
+    border-radius: 4px;
+    font-weight: 400;
+    display: block;
+    width: 100%;
+    cursor: pointer;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    /*background: transparent;*/
+  }
+  
+  .btn:hover {
+    background-color: rgba(255, 255, 255, 0.12);
+  }
+  
+  .cards {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .cards_item {
+    display: flex;
+    padding: 1rem;
+  }
+  
+  @media (min-width: 40rem) {
+    .cards_item {
+      width: 50%;
+    }
+  }
+  
+  @media (min-width: 56rem) {
+    .cards_item {
+      width: 25%;
+    }
+  }
+  
+  .card {
+    background-color: white;
+    border-radius: 0.25rem;
+    box-shadow: 0 20px 40px -14px rgba(0, 0, 0, 0.25);
+    display: flex;
+    flex-direction: wrap;
+    overflow: hidden;
+  }
+  
+  .card_content {
+    padding: 1rem;
+    /**background: linear-gradient(to bottom left, #EF8D9C 40%, #FFC39E 100%);**/
+
+  }
+  
+  .card_title {
+    color: #000000;
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: capitalize;
+    margin: 0px;
+    
+  }
+  /* .container{
+    padding-top: 15px;
+    max-width: 85% !important;
+  } */
+
+  .card_text {
+    color: #000000;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    margin-bottom: 1.25rem;    
+    font-weight: 400;
+  }
+  .made_by{
+    font-weight: 400;
+    font-size: 13px;
+    margin-top: 35px;
+    text-align: center;
+  }
+  .made_by a {
+    text-decoration: none;
+    color: #5e95ff;
+    font-weight: 700;
+  }
+  .img-thumbnail{
+    border: none !important;
+  }
+.teste{
+  width: 100%;
+  height: 80vh;
+  padding: 5em;
+  background-image: url("../images/dog.png");
+}
+.teste p{
+  font-size: 2.5em;
+  color: white;
+  max-width: 400px;
+  margin-top: 1em;
+}
+
+.btn-adotar, .btn-ajudar{
+  text-decoration: none;
+  color: white;
+  padding: 1em 2em;
+  border-radius: 4px;
+  transition: .5s;
+}
+
+.btn-adotar{
+  background-color:  #F1D434;
+  margin-left: 1em;
+}
+.btn-ajudar{
+  background-color: #23C6C8;
+}
+.btn-adotar:hover{
+  text-decoration: none;
+  background-color: rgb(216, 189, 36);
+  color: white;
+}
+.btn-ajudar:hover{
+  text-decoration: none;
+  background-color: #272626;
+  color: white;
+}
+@media screen and (max-width:400px){
+  .card_image{
+    max-height: 50%;
+    max-width: 50%;
+  }
+}
+

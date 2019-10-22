@@ -4,7 +4,7 @@ from django.utils.timezone import now
 from django.contrib.auth.models import User
 
 class Animal(models.Model):
-    imagemAnimal = models.ImageField(upload_to='images/')
+    #imagemAnimal = models.ImageField(upload_to='images/')
     descricao = models.CharField(
         max_length=255, null=False, blank=False
     )
@@ -19,26 +19,44 @@ class Animal(models.Model):
     pequeno = 5
     medio = 6
     grande = 7
-    naoInformado = 8
+    nao_informado = 8
     escolhasS = (
-        (1, 'Macho'),
-        (2, 'Femea'),
-        (8, 'Nao informado')
+        (macho, 'Macho'),
+        (femea, 'Femea'),
+        (nao_informado, 'Nao informado')
     )
     escolhasR = (
-        (3, 'Gato'),
-        (4, 'Cachorro'),
-        (8, 'Nao informado')
+        (gato, 'Gato'),
+        (cachorro, 'Cachorro'),
+        (nao_informado, 'Nao informado')
     )
     escolhasP = (
-        (5, 'Pequeno'),
-        (6, 'Medio'),
-        (7, 'Grande'),
-        (8, 'Nao informado')
+        (pequeno, 'Pequeno'),
+        (medio, 'Médio'),
+        (grande, 'Grande'),
+        (nao_informado, 'Nao informado')
     )
-    sexo = models.IntegerField(choices=escolhasS, default=8)
-    especie = models.IntegerField(choices=escolhasR, default=8)
-    porte = models.IntegerField(choices=escolhasP, default=8)
+    sexo = models.CharField(max_length=6, choices=escolhasS, default=8)
+    especie = models.CharField(max_length=9, choices=escolhasR, default=8)
+    porte = models.CharField(max_length=8, choices=escolhasP, default=8)
+
+    def map_sexo(self):
+        if self.sexo == self.macho:
+            return "Macho"
+        elif self.sexo == self.femea:
+            return "Fêmea"
+        elif self.sexo == self.nao_informado:
+            return "Não informado"
+
+    def map_porte(self):
+        if self.porte == self.pequeno:
+            return "Pequeno"
+        elif self.porte == self.medio:
+            return "Médio"
+        elif self.porte == self.grande:
+            return "Grande"
+        elif self.porte == self.nao_informado:
+            return "Não informado"
 
     def __str__(self):
         return f"{self.nomeAnimal} ({self.descricao})"
@@ -75,3 +93,8 @@ class Adocao(models.Model):
 
     class Meta:
         verbose_name_plural = 'adoções'
+
+class Imagens(models.Model):
+    animal = models.ForeignKey(Animal,on_delete=models.CASCADE, related_name = "imagens")
+    #animal.imagens 
+    imagem_animal = models.ImageField(upload_to='images/')

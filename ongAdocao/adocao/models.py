@@ -36,9 +36,9 @@ class Animal(models.Model):
         (grande, 'Grande'),
         (nao_informado, 'Nao informado')
     )
-    sexo = models.CharField(max_length=6, choices=escolhasS, default=8)
-    especie = models.CharField(max_length=9, choices=escolhasR, default=8)
-    porte = models.CharField(max_length=8, choices=escolhasP, default=8)
+    sexo = models.IntegerField('Sexo',choices=escolhasS, default=8)
+    especie = models.IntegerField(choices=escolhasR, default=8)
+    porte = models.IntegerField(choices=escolhasP, default=8)
 
     def map_sexo(self):
         if self.sexo == self.macho:
@@ -93,6 +93,7 @@ class Adocao(models.Model):
 
     class Meta:
         verbose_name_plural = 'adoções'
+
 
 class Imagens(models.Model):
     animal = models.ForeignKey(Animal,on_delete=models.CASCADE, related_name = "imagens")

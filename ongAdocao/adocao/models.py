@@ -3,8 +3,9 @@ from django.contrib import admin
 from django.utils.timezone import now
 from django.contrib.auth.models import User
 
+
 class Animal(models.Model):
-    #imagemAnimal = models.ImageField(upload_to='images/')
+    imagemAnimal = models.ImageField(upload_to='images/')
     descricao = models.CharField(
         max_length=255, null=False, blank=False
     )
@@ -36,9 +37,12 @@ class Animal(models.Model):
         (grande, 'Grande'),
         (nao_informado, 'Nao informado')
     )
-    sexo = models.IntegerField('Sexo',choices=escolhasS, default=8)
+    sexo = models.IntegerField(choices=escolhasS, default=8)
     especie = models.IntegerField(choices=escolhasR, default=8)
     porte = models.IntegerField(choices=escolhasP, default=8)
+
+    def __str__(self):
+        return f"{self.nomeAnimal} ({self.descricao})"
 
     def map_sexo(self):
         if self.sexo == self.macho:
@@ -49,20 +53,22 @@ class Animal(models.Model):
             return "Não informado"
 
     def map_porte(self):
-        if self.porte == self.pequeno:
-            return "Pequeno"
-        elif self.porte == self.medio:
-            return "Médio"
-        elif self.porte == self.grande:
-            return "Grande"
-        elif self.porte == self.nao_informado:
-            return "Não informado"
-
-    def __str__(self):
-        return f"{self.nomeAnimal} ({self.descricao})"
+            if self.porte == self.pequeno:
+                return "Pequeno"
+            elif self.porte == self.medio:
+                return "Médio"
+            elif self.porte == self.grande:
+                return "Grande"
+            elif self.porte == self.nao_informado:
+                return "Não informado"
 
     class Meta:
         verbose_name_plural = 'animais'
+
+    class Meta:
+       ordering = ['nomeAnimal']
+
+
 
 class Pessoa(models.Model):
     nomePessoa = models.CharField(
@@ -81,7 +87,6 @@ class Pessoa(models.Model):
     def __str__(self):
         return self.nomePessoa
 
-
 class Adocao(models.Model):
     data_adocao =  models.DateTimeField(default=now, editable=False)
     animal = models.ForeignKey(Animal,on_delete=models.CASCADE)
@@ -95,7 +100,8 @@ class Adocao(models.Model):
         verbose_name_plural = 'adoções'
 
 
-class Imagens(models.Model):
-    animal = models.ForeignKey(Animal,on_delete=models.CASCADE, related_name = "imagens")
+#class Imagens(models.Model):
+ #   animal = models.ForeignKey(Animal,on_delete=models.CASCADE, related_name = "imagens")
     #animal.imagens 
-    imagem_animal = models.ImageField(upload_to='images/')
+  #  imagem_animal = models.ImageField(upload_to='images/')
+

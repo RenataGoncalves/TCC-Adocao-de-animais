@@ -6,12 +6,9 @@ from django.contrib.auth.models import User
 
 class Animal(models.Model):
     imagemAnimal = models.ImageField(upload_to='images/')
-    descricao = models.CharField(
-        max_length=255, null=False, blank=False
-    )
-    nomeAnimal = models.CharField(
-        max_length=255, null=False, blank=False
-    )
+    nomeAnimal = models.CharField(max_length=255, null=False, blank=False)
+    descricao = models.CharField(max_length=255, null=False, blank=False)
+    historia = models.TextField(null=False, blank=False)
     adotado = models.BooleanField(default=False)
     macho = 1
     femea = 2
@@ -40,6 +37,7 @@ class Animal(models.Model):
     sexo = models.IntegerField(choices=escolhasS, default=8)
     especie = models.IntegerField(choices=escolhasR, default=8)
     porte = models.IntegerField(choices=escolhasP, default=8)
+   
 
     def __str__(self):
         return f"{self.nomeAnimal} ({self.descricao})"
@@ -63,7 +61,7 @@ class Animal(models.Model):
                 return "Não informado"
 
     class Meta:
-        verbose_name_plural = 'animais'
+        verbose_name_plural = 'Animais'
 
     class Meta:
        ordering = ['nomeAnimal']

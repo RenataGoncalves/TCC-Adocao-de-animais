@@ -1,0 +1,8 @@
+.area-pet-img{
+    position: relative;
+}
+
+.area-pet-img img{
+    max-width: 100%;
+    max-height: 500px;
+}

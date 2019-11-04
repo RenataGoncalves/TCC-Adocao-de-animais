@@ -5,8 +5,7 @@ from django.contrib.auth.models import User
 
 
 class Animal(models.Model):
-    imagemAnimal = models.ImageField(upload_to='images/')
-    nomeAnimal = models.CharField(max_length=255, null=False, blank=False)
+    nome = models.CharField(max_length=255, null=False, blank=False)
     descricao = models.CharField(max_length=255, null=False, blank=False)
     historia = models.TextField(null=False, blank=False)
     adotado = models.BooleanField(default=False)
@@ -40,7 +39,7 @@ class Animal(models.Model):
    
 
     def __str__(self):
-        return f"{self.nomeAnimal} ({self.descricao})"
+        return f"{self.nome} ({self.descricao})"
 
     def map_sexo(self):
         if self.sexo == self.macho:
@@ -64,26 +63,26 @@ class Animal(models.Model):
         verbose_name_plural = 'Animais'
 
     class Meta:
-       ordering = ['nomeAnimal']
+       ordering = ['nome']
 
 
 
 class Pessoa(models.Model):
-    nomePessoa = models.CharField(
+    nome = models.CharField(
         max_length=255, null=False, blank=False
     )
-    telefonePessoa = models.CharField(
+    telefone = models.CharField(
         max_length=30, null=False, blank=False
     )
-    cpfPessoa = models.CharField(
+    cpf = models.CharField(
         max_length=11, null=False, blank=False
     )
-    enderecoPessoa= models.CharField(
+    endereco = models.CharField(
         max_length=255, null=False, blank=False
     )
 
     def __str__(self):
-        return self.nomePessoa
+        return self.nome
 
 class Adocao(models.Model):
     data_adocao =  models.DateTimeField(default=now, editable=False)
@@ -92,14 +91,42 @@ class Adocao(models.Model):
     funcionario = models.ForeignKey(User,on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.animal.nomeAnimal
+        return self.animal.nome
 
     class Meta:
         verbose_name_plural = 'adoções'
 
 
-#class Imagens(models.Model):
- #   animal = models.ForeignKey(Animal,on_delete=models.CASCADE, related_name = "imagens")
+class Imagens(models.Model):
+    animal = models.ForeignKey(Animal,on_delete=models.CASCADE, related_name = "imagens")
     #animal.imagens 
-  #  imagem_animal = models.ImageField(upload_to='images/')
+    imagem = models.ImageField(null=True, upload_to='images/')
+
+    class Meta:
+        verbose_name_plural = 'Imagens'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

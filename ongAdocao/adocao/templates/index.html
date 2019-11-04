@@ -20,16 +20,20 @@
                                 <div class="ribbon">Adotado</div>
                             </div>
                         {% endif %}
-                        <div class="card_image">
-                            <a href="{% url 'teste' Animal.id %}">
-                                <img src="{{Animal.imagemAnimal.url}}" class="img-thumbnail">
-                            </a>           
-                        </div>
+                        {%for foto in imagens %}
+                        {% if foto.animal.id == Animal.id %}
+                            <div class="card_image">
+                                <a href="{% url 'descricao' Animal.id %}">
+                                    <img src="{{foto.imagem.url}}" class="img-thumbnail">
+                                </a>           
+                            </div>
+                        {%endif%}
+                        {%endfor%}
                         <div class="card_content">
-                            <h2 class="card_title">{{Animal.nomeAnimal}}</h2>
+                            <h2 class="card_title">{{Animal.nome}}</h2>
                             <p class="card_text">{{Animal.get_sexo_display}}</p>
                             <p class="card_text">{{Animal.get_porte_display}}</p>
-                            <a href="{% url 'teste' Animal.id %}">
+                            <a href="{% url 'descricao' Animal.id %}">
                                 <div class="botao">
                                     <button class="btn card_btn">Ver Mais</button>
                                 </div>
@@ -78,7 +82,7 @@
                             </div>
                         {% endif %}
                         <div class="card_image">
-                            <a href="{% url 'teste' Animal.id %}">
+                            <a href="{% url 'descricao' Animal.id %}">
                                 <img src="{{Animal.imagemAnimal.url}}" class="img-thumbnail">
                             </a>           
                         </div>
@@ -86,7 +90,7 @@
                             <h2 class="card_title">{{Animal.nomeAnimal}}</h2>
                             <p class="card_text">{{Animal.get_sexo_display}}</p>
                             <p class="card_text">{{Animal.get_porte_display}}</p>
-                            <a href="{% url 'teste' Animal.id %}">
+                            <a href="{% url 'descricao' Animal.id %}">
                                 <div class="botao">
                                     <button class="btn card_btn">Ver Mais</button>
                                 </div>

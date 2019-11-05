@@ -3,8 +3,13 @@ from .models import Animal, Imagens
 from django.core.paginator import Paginator
 
 def descricao(request,idAnimal):
-    animal = Animal.objects.get(id=idAnimal)
-    return render(request, 'descricao.html',{'animal':animal})
+	contexto = {}
+	animal = Animal.objects.get(id=idAnimal)
+	imagens = Imagens.objects.filter(animal=animal)
+	contexto['animal'] = animal
+	contexto['imagens'] = imagens
+
+	return render(request, 'descricao.html',contexto)
 
 
 def index(request):

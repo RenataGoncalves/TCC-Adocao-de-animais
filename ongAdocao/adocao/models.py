@@ -41,23 +41,24 @@ class Animal(models.Model):
     def __str__(self):
         return f"{self.nome} ({self.descricao})"
 
-    def map_sexo(self):
-        if self.sexo == self.macho:
-            return "Macho"
-        elif self.sexo == self.femea:
-            return "Fêmea"
-        elif self.sexo == self.nao_informado:
-            return "Não informado"
+    # def map_sexo(self):
+    #     if self.sexo == self.macho:
+    #         return "Macho"
+    #     elif self.sexo == self.femea:
+    #         return "Fêmea"
+    #     elif self.sexo == self.nao_informado:
+    #         return "Não informado"
 
-    def map_porte(self):
-            if self.porte == self.pequeno:
-                return "Pequeno"
-            elif self.porte == self.medio:
-                return "Médio"
-            elif self.porte == self.grande:
-                return "Grande"
-            elif self.porte == self.nao_informado:
-                return "Não informado"
+    # def map_porte(self):
+    #         if self.porte == self.pequeno:
+    #             return "Pequeno"
+    #         elif self.porte == self.medio:
+    #             return "Médio"
+    #         elif self.porte == self.grande:
+    #             return "Grande"
+    #         elif self.porte == self.nao_informado:
+    #             return "Não informado"
+
 
     class Meta:
         verbose_name_plural = 'Animais'

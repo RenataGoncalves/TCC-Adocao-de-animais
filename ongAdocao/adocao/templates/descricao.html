@@ -3,7 +3,7 @@
 
 
 <div class="container py-3">
-    <h2>Conheça o {{animal.nomeAnimal}}</h3>
+        <h2>Conheça o {{animal.nome}}</h2>
 </div>
 
 <div class="area-pet">
@@ -11,23 +11,23 @@
         <div class="row">
             <div class="col-lg-7 col-md-8">
                 <div class="area-pet-img">
-                    <div class="img-pet">
-                        <img class="img-fuid img-thumbnail" src="{{imagens.imagem.url}}" >
-                    </div>
+                    {% for imagens in imagens%}
+                        <div class="img-pet">
+                            <img class="img-fuid img-thumbnail" src="{{imagens.imagem.url}}" >
+                        </div>
+                    {%endfor%}
                 </div>
             </div>
 
             <div class="col-lg-3 col-md-4">
                 <div class="pet-dados">
-                    <h3>{{animal.nomeAnimal}}</h3>
+                    <h3>{{animal.nome}}</h3>
                     <p class="card_text">{{animal.get_sexo_display}}</p>
                     <p class="card_text">{{animal.get_porte_display}}</p>
                 </div>
             </div>
 
         </div>
-
-
 
     </div>
 </div> 

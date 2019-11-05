@@ -4,8 +4,8 @@
     <div class="teste">
         <div class="container">
             <p>Nossos peludos estão ansiosos à espera de um lar!</p>
-            <a href="#" class="btn-ajudar">Quero ajudar</a>
-            <a href="#" class="btn-adotar">Adotar</a>
+            <a href="#" class="btn-ajudar"><strong>QUERO AJUDAR</strong></a>
+            <a href="#" class="btn-adotar"><strong>ADOTAR</strong></a>
         </div>
     </div>
     <div class="container">
@@ -20,25 +20,30 @@
                                 <div class="ribbon">Adotado</div>
                             </div>
                         {% endif %}
-                        {%for foto in imagens %}
-                        {% if foto.animal.id == Animal.id %}
+                        {% with Animal.imagens.all|first as img %}
                             <div class="card_image">
                                 <a href="{% url 'descricao' Animal.id %}">
-                                    <img src="{{foto.imagem.url}}" class="img-thumbnail">
+                                    <img src="{{img.imagem.url}}" class="img-thumbnail">
                                 </a>           
                             </div>
-                        {%endif%}
-                        {%endfor%}
+                        {% endwith %}
+                        
                         <div class="card_content">
-                            <h2 class="card_title">{{Animal.nome}}</h2>
-                            <p class="card_text">{{Animal.get_sexo_display}}</p>
-                            <p class="card_text">{{Animal.get_porte_display}}</p>
-                            <a href="{% url 'descricao' Animal.id %}">
-                                <div class="botao">
-                                    <button class="btn card_btn">Ver Mais</button>
-                                </div>
+                            <div class="card_desc"> 
+                                <h2 class="card_title">{{Animal.nome}}</h2>
+                                <p class="card_text ">{{Animal.get_sexo_display}}</p>
+                            </div>
+                            <div>    
+                                <p class="card_text">{{Animal.get_porte_display}}</p>
+                                <a href="{% url 'descricao' Animal.id %}">
+                            </div>
+                            
+                            <div class="botao">
+                                <button class="btn card_btn">Ver Mais</button>
+                            </div>
                             </a>
                         </div>
+                        
                     </div>
                 </li>
             {% endfor %}
@@ -47,7 +52,8 @@
         <p>Não há animais para a adoção </p>
         {% endif %}
     </div>
-     <div class="d-flex justify-content-center">
+
+    <div class="d-flex justify-content-center">
         <nav aria-label="Page navigation example">
         <ul class="pagination">
             {% if animais.has_previous %}
@@ -69,6 +75,7 @@
         </ul>
         </nav>
     </div> 
+
     <div class="container">
         <h1>Últimas adoções regisradas</h1>
         {% if animaisAdotados %}

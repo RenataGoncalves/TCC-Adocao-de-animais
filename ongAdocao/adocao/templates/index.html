@@ -1,13 +1,14 @@
 {% extends 'base.html' %}
 
 {% block bloco %}
-    <div class="teste">
+    <div class="img-apresentacao">
         <div class="container">
             <p>Nossos peludos estão ansiosos à espera de um lar!</p>
             <a href="#" class="btn-ajudar"><strong>QUERO AJUDAR</strong></a>
             <a href="#" class="btn-adotar"><strong>ADOTAR</strong></a>
         </div>
     </div>
+
     <div class="container">
         {% if animais %}
         <h1 class="pt-4">Animais para adoção</h1>
@@ -29,19 +30,17 @@
                         {% endwith %}
                         
                         <div class="card_content">
-                            <div class="card_desc"> 
-                                <h2 class="card_title">{{Animal.nome}}</h2>
-                                <p class="card_text ">{{Animal.get_sexo_display}}</p>
+                            <div class="card_desc "> 
+                                <h2 class="card_title float-left ">{{Animal.nome}}</h2>
+                                <p class="card_text float-right">{{Animal.get_sexo_display}}</p>
                             </div>
                             <div>    
-                                <p class="card_text">{{Animal.get_porte_display}}</p>
-                                <a href="{% url 'descricao' Animal.id %}">
+                                <p class="card_text porte">{{Animal.get_porte_display}}</p>  
                             </div>
                             
-                            <div class="botao">
-                                <button class="btn card_btn">Ver Mais</button>
-                            </div>
-                            </a>
+                            <div class="text-center">
+                                <a href="{% url 'descricao' Animal.id %}" class="btn btn btn-warning">Ver Mais</a>
+                            </div>                            
                         </div>
                         
                     </div>

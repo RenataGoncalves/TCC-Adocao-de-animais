@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load staticfiles %}
 
 {% block bloco %}
     <div class="img-apresentacao">
@@ -28,16 +29,18 @@
                                 </a>           
                             </div>
                         {% endwith %}
-                        
                         <div class="card_content">
                             <div class="card_desc "> 
                                 <h2 class="card_title float-left ">{{Animal.nome}}</h2>
-                                <p class="card_text float-right">{{Animal.get_sexo_display}}</p>
+                                {% if Animal.sexo == 1 %}
+                                    <img class="pl-2" style="max-width: 24px" src="{% static 'images/male-icon.svg' %}" alt="Icone macho">
+                                {% else %}
+                                    <img style="max-width: 24px" src="{% static 'images/female-icon.svg' %}" alt="Icone macho">
+                                {% endif %}
                             </div>
-                            <div>    
+                            <div class="float-right">    
                                 <p class="card_text porte">{{Animal.get_porte_display}}</p>  
                             </div>
-                            
                             <div class="text-center">
                                 <a href="{% url 'descricao' Animal.id %}" class="btn btn btn-warning">Ver Mais</a>
                             </div>                            
@@ -87,20 +90,25 @@
                                 <div class="ribbon">Adotado</div>
                             </div>
                         {% endif %}
-                        <div class="card_image">
-                            <a href="{% url 'descricao' Animal.id %}">
-                                <img src="{{Animal.imagemAnimal.url}}" class="img-thumbnail">
-                            </a>           
-                        </div>
+                        {% with Animal.imagens.all|first as img %}
+                            <div class="card_image">
+                                <a href="{% url 'descricao' Animal.id %}">
+                                    <img src="{{img.imagem.url}}" class="img-thumbnail">
+                                </a>           
+                            </div>
+                        {% endwith %}
                         <div class="card_content">
-                            <h2 class="card_title">{{Animal.nomeAnimal}}</h2>
-                            <p class="card_text">{{Animal.get_sexo_display}}</p>
-                            <p class="card_text">{{Animal.get_porte_display}}</p>
-                            <a href="{% url 'descricao' Animal.id %}">
-                                <div class="botao">
-                                    <button class="btn card_btn">Ver Mais</button>
-                                </div>
-                            </a>
+                            <div class="card_desc "> 
+                                <h2 class="card_title float-left ">{{Animal.nome}}</h2>
+                                <p class="card_text float-right">{{Animal.get_sexo_display}}</p>
+                            </div>
+                            <div>    
+                                <p class="card_text porte">{{Animal.get_porte_display}}</p>  
+                            </div>
+                            
+                            <div class="text-center">
+                                <a href="{% url 'descricao' Animal.id %}" class="btn btn btn-warning">Ver Mais</a>
+                            </div>                            
                         </div>
                     </div>
                 </li>

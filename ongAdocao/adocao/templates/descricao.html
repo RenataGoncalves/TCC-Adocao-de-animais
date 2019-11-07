@@ -3,7 +3,11 @@
 
 
 <div class="container py-3">
+    {% if animal.sexo == 2 %}
+        <h2>Conheça a {{animal.nome}}</h2>
+    {%else%}
         <h2>Conheça o {{animal.nome}}</h2>
+    {%endif%}    
 </div>
 
 <div class="area-pet">

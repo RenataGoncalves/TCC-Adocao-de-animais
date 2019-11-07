@@ -4,6 +4,8 @@
   padding: 5em;
   background-image: url("../images/dog.png");
   background-attachment: fixed;
+  background-size: cover;
+  background-position: center center;
 }
 .img-apresentacao p{
   font-size: 2.5em;
@@ -16,7 +18,7 @@
   text-decoration: none;
   color: white;
   padding: 1em 2em;
-  border-radius: 4px;
+  border-radius: .6em;
   transition: .5s;
 }
 .btn-adotar{
@@ -170,8 +172,28 @@
     .card_text{
       font-size: 1.2rem;
     }
+    .img-apresentacao{
+      height: 50vh;
+    }
   }
     
+  @media screen and (min-width: 895px) and (max-width: 1119px){
+    .cards_item{
+      width: 33%;
+    }
+  }
+
+
+  @media (max-width: 767px){
+    .img-apresentacao p{
+      font-size: 30px!important;
+    }
+    .img-apresentacao{
+      height: 50vh;
+    }.card_text{
+      font-size: 01.1rem;
+    } 
+  }
 /*
   @media screen and (max-width:400px){
     .card_image{
@@ -186,5 +208,15 @@
   }
   .img-apresentacao p{
     margin-top: 0 !important;
+    font-size: 25px!important;
+    line-height: 40px;
+  }
+  .btn-adotar{
+    padding: 0.8em 1em;
+    border-radius: .6em;
+  } 
+  .btn-ajudar{
+    padding: 0.8em 1em;
+    border-radius: .6em;
   }
 }

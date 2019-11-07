@@ -2,13 +2,6 @@
     max-width: 150px;
     height: auto;
 }
-
-.corDiv{
-    background: purple;
-    width: 50%;
-}
-
-.divv{
-    background: cornflowerblue;
-    width: 100%;
+.cor-links{
+    color: #4f5459;
 }

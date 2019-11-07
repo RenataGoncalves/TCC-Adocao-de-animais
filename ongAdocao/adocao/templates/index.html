@@ -10,7 +10,7 @@
         </div>
     </div>
 
-    <div class="container">
+    <div id="adotar" class="container">
         {% if animais %}
         <h1 class="pt-4">Animais para adoção</h1>
         <ul class="cards">
@@ -33,12 +33,12 @@
                             <div class="card_desc "> 
                                 <h2 class="card_title float-left ">{{Animal.nome}}</h2>
                                 {% if Animal.sexo == 1 %}
-                                    <img class="pl-2" style="max-width: 24px" src="{% static 'images/male-icon.svg' %}" alt="Icone macho">
+                                    <img class="float-right" style="max-width: 22px" src="{% static 'images/male-icon.svg' %}" alt="Icone macho">
                                 {% else %}
-                                    <img style="max-width: 24px" src="{% static 'images/female-icon.svg' %}" alt="Icone macho">
+                                    <img class="float-right" style="max-width: 24px" src="{% static 'images/female-icon.svg' %}" alt="Icone macho">
                                 {% endif %}
                             </div>
-                            <div class="float-right">    
+                            <div>    
                                 <p class="card_text porte">{{Animal.get_porte_display}}</p>  
                             </div>
                             <div class="text-center">

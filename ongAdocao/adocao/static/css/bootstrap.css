@@ -487,6 +487,7 @@ mark,
   border: 1px solid #dee2e6;
   border-radius: 0.25rem;
   max-width: 100%;
+  max-height: 500px;
   height: auto;
 }
 

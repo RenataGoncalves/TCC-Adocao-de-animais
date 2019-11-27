@@ -7,10 +7,11 @@ def descricao(request,idAnimal):
 	animal = Animal.objects.get(id=idAnimal)
 	imagens = Imagens.objects.filter(animal=animal)[1:]
 	imagem1 = Imagens.objects.filter(animal=animal)[0]
+	animais = Animal.objects.filter(adotado=False)[:4]
 	contexto['animal'] = animal
 	contexto['imagens'] = imagens
 	contexto['imagem1'] = imagem1
-
+	contexto['animais'] = animais
 	return render(request, 'descricao.html',contexto)
 
 def index(request):

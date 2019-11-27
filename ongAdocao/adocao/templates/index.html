@@ -12,7 +12,7 @@
 
     <div id="adotar" class="container">
         {% if animais %}
-        <h1 class="pt-4">Animais para adoção</h1>
+        <p class="pt-4 lead text-center font-weight-bold texto-cor" style="font-size:35px">Animais para adoção</p>
         <ul class="cards">
             {% for Animal in animais %}
                 <li class="cards_item"> 
@@ -42,7 +42,7 @@
                                 <p class="card_text porte">{{Animal.get_porte_display}}</p>  
                             </div>
                             <div class="text-center">
-                                <a href="{% url 'descricao' Animal.id %}" class="btn btn btn-warning">Ver Mais</a>
+                                <a href="{% url 'descricao' Animal.id %}" class="btn btn btn-warning">VER MAIS</a>
                             </div>                            
                         </div>
                         
@@ -79,7 +79,7 @@
     </div> 
 
     <div class="container">
-        <h1>Últimas adoções regisradas</h1>
+        <p class="text-center lead font-weight-bold texto-cor" style="font-size:35px">Últimas adoções registradas</p>
         {% if animaisAdotados %}
         <ul class="cards">
             {% for Animal in animaisAdotados %}
@@ -98,16 +98,19 @@
                             </div>
                         {% endwith %}
                         <div class="card_content">
-                            <div class="card_desc "> 
+                            <div class="card_desc"> 
                                 <h2 class="card_title float-left ">{{Animal.nome}}</h2>
-                                <p class="card_text float-right">{{Animal.get_sexo_display}}</p>
+                                {% if Animal.sexo == 1 %}
+                                    <img class="float-right" style="max-width: 22px" src="{% static 'images/male-icon.svg' %}" alt="Icone macho">
+                                {% else %}
+                                    <img class="float-right" style="max-width: 24px" src="{% static 'images/female-icon.svg' %}" alt="Icone macho">
+                                {% endif %}
                             </div>
                             <div>    
                                 <p class="card_text porte">{{Animal.get_porte_display}}</p>  
                             </div>
-                            
                             <div class="text-center">
-                                <a href="{% url 'descricao' Animal.id %}" class="btn btn btn-warning">Ver Mais</a>
+                                <a href="{% url 'descricao' Animal.id %}" class="btn btn btn-warning">VER MAIS</a>
                             </div>                            
                         </div>
                     </div>

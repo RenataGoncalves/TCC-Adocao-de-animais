@@ -24,3 +24,10 @@
   object-fit: cover;
   object-position: center;
 }
+.list-animais{
+  background: #F8F8FA;
+}
+
+.texto-cor{
+  color: #23C6C8;
+}

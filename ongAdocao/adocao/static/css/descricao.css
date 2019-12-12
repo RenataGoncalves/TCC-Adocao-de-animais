@@ -1,5 +1,5 @@
 .area-pet{
-  background-color: #ffffdf;
+  
 }
 .area-pet-img {
   position: relative;
@@ -30,4 +30,15 @@
 
 .texto-cor{
   color: #23C6C8;
+}
+ul.info-gerais{
+  list-style: none;
+  padding-left: 8px;
+  background: url(../images/check.svg) no-repeat 0 4px;
+}
+
+ul.info-gerais li{
+  background: url(../images/check-mark.png) no-repeat 0 4px;
+  background-image: url(../images/check-mark.png) ;
+  padding-left: 20px;
 }

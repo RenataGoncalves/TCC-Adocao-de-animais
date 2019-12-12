@@ -1,6 +1,7 @@
 from django.contrib import admin
 from .models import Pessoa, Animal, Adocao, Imagens
 from django.utils.html import format_html
+from django.contrib.auth.models import Group
 
 class ImagensAdmin(admin.ModelAdmin):      
     
@@ -18,7 +19,7 @@ class ImagensInline(admin.StackedInline):
    
 
 class AnimalAdmin(admin.ModelAdmin):
-    list_display = ['nome','especie','sexo','porte']
+    list_display = ['nome','especie','sexo','porte','adotado', 'data']
     #list_display = ['nomeAnimal','get_sexo_display', 'get_especie_display', 'get_porte_display','map_sexo', 'map_porte']
     search_fields = ['nome']
     inlines = [ImagensInline]       
@@ -32,5 +33,6 @@ admin.site.register(Animal, AnimalAdmin)
 admin.site.register(Pessoa)
 admin.site.register(Adocao, AdocaoAdmin)
 admin.site.register(Imagens, ImagensAdmin)
+admin.site.unregister(Group)
 
 admin.site.site_header = "Administração da OngAdoção"

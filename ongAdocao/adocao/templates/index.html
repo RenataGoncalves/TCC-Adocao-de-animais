@@ -1,125 +1,161 @@
-{% extends 'base.html' %}
-{% load staticfiles %}
+{% extends 'base.html' %} {% load staticfiles %} {% block bloco %}
+<div class="img-apresentacao">
+  <div class="container">
+    <p>Nossos peludos estão ansiosos à espera de um lar!</p>
+    <a href="#" class="btn-ajudar"><strong>QUERO AJUDAR</strong></a>
+    <a href="#" class="btn-adotar"><strong>ADOTAR</strong></a>
+  </div>
+</div>
 
-{% block bloco %}
-    <div class="img-apresentacao">
-        <div class="container">
-            <p>Nossos peludos estão ansiosos à espera de um lar!</p>
-            <a href="#" class="btn-ajudar"><strong>QUERO AJUDAR</strong></a>
-            <a href="#" class="btn-adotar"><strong>ADOTAR</strong></a>
+<div id="adotar" class="container">
+  {% if animais %}
+  <p
+    class="pt-4 lead text-center font-weight-bold texto-cor"
+    style="font-size:35px"
+  >
+    Animais para adoção
+  </p>
+  <ul class="cards">
+    {% for Animal in animais %}
+    <li class="cards_item">
+      <div class="card">
+        {% if Animal.adotado%}
+        <div class="ribbon-wrapper">
+          <div class="ribbon">Adotado</div>
         </div>
-    </div>
-
-    <div id="adotar" class="container">
-        {% if animais %}
-        <p class="pt-4 lead text-center font-weight-bold texto-cor" style="font-size:35px">Animais para adoção</p>
-        <ul class="cards">
-            {% for Animal in animais %}
-                <li class="cards_item"> 
-                    <div class="card">
-                        {% if Animal.adotado%}
-                            <div class="ribbon-wrapper">
-                                <div class="ribbon">Adotado</div>
-                            </div>
-                        {% endif %}
-                        {% with Animal.imagens.all|first as img %}
-                            <div class="card_image">
-                                <a href="{% url 'descricao' Animal.id %}">
-                                    <img src="{{img.imagem.url}}" class="img-thumbnail">
-                                </a>           
-                            </div>
-                        {% endwith %}
-                        <div class="card_content">
-                            <div class="card_desc"> 
-                                <h2 class="card_title float-left ">{{Animal.nome}}</h2>
-                                {% if Animal.sexo == 1 %}
-                                    <img class="float-right" style="max-width: 22px" src="{% static 'images/male-icon.svg' %}" alt="Icone macho">
-                                {% else %}
-                                    <img class="float-right" style="max-width: 24px" src="{% static 'images/female-icon.svg' %}" alt="Icone macho">
-                                {% endif %}
-                            </div>
-                            <div>    
-                                <p class="card_text porte">{{Animal.get_porte_display}}</p>  
-                            </div>
-                            <div class="text-center">
-                                <a href="{% url 'descricao' Animal.id %}" class="btn btn btn-warning">VER MAIS</a>
-                            </div>                            
-                        </div>
-                        
-                    </div>
-                </li>
-            {% endfor %}
-        </ul>
-        {% else %}
-        <p>Não há animais para a adoção </p>
-        {% endif %}
-    </div>
-
-    <div class="d-flex justify-content-center">
-        <nav aria-label="Page navigation example">
-        <ul class="pagination">
-            {% if animais.has_previous %}
-            <li class="page-ite">
-                <a class="page-link" href="?page=1">Primeira</a>
-            </li>
-            
-            <li class="page-item"><a class="page-link" href="?page={{ animais.previous_page_number }}">Anterior</a></li>
-            
+        {% endif %} {% with Animal.imagens.all|first as img %}
+        <div class="card_image">
+          <a href="{% url 'descricao' Animal.id %}">
+            <img src="{{img.imagem.url}}" class="img-thumbnail" />
+          </a>
+        </div>
+        {% endwith %}
+        <div class="card_content">
+          <div class="card_desc">
+            <h2 class="card_title float-left ">{{Animal.nome}}</h2>
+            {% if Animal.sexo == 1 %}
+            <img
+              class="float-right"
+              style="max-width: 22px"
+              src="{% static 'images/male-icon.svg' %}"
+              alt="Icone macho"
+            />
+            {% else %}
+            <img
+              class="float-right"
+              style="max-width: 24px"
+              src="{% static 'images/female-icon.svg' %}"
+              alt="Icone femea"
+            />
             {% endif %}
-            {% if animais.has_next %}
-            <li class="page-item active " aria-current="page">
-                <a class="page-link" href="?page={{ animais.next_page_number }}">2  <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="page-item">
-                <a class="page-link" href="?page={{ animais.paginator.num_pages }}">Ultima</a>
-            </li>
-            {% endif %}
-        </ul>
-        </nav>
-    </div> 
+          </div>
+          <div>
+            <p class="card_text porte">{{Animal.get_porte_display}}</p>
+          </div>
+          <div class="text-center">
+            <a
+              href="{% url 'descricao' Animal.id %}"
+              class="btn btn btn-warning"
+              >VER MAIS</a
+            >
+          </div>
+        </div>
+      </div>
+    </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+  <p>Não há animais para a adoção</p>
+  {% endif %}
+</div>
 
-    <div class="container">
-        <p class="text-center lead font-weight-bold texto-cor" style="font-size:35px">Últimas adoções registradas</p>
-        {% if animaisAdotados %}
-        <ul class="cards">
-            {% for Animal in animaisAdotados %}
-                <li class="cards_item"> 
-                    <div class="card">
-                        {% if Animal.adotado%}
-                            <div class="ribbon-wrapper">
-                                <div class="ribbon">Adotado</div>
-                            </div>
-                        {% endif %}
-                        {% with Animal.imagens.all|first as img %}
-                            <div class="card_image">
-                                <a href="{% url 'descricao' Animal.id %}">
-                                    <img src="{{img.imagem.url}}" class="img-thumbnail">
-                                </a>           
-                            </div>
-                        {% endwith %}
-                        <div class="card_content">
-                            <div class="card_desc"> 
-                                <h2 class="card_title float-left ">{{Animal.nome}}</h2>
-                                {% if Animal.sexo == 1 %}
-                                    <img class="float-right" style="max-width: 22px" src="{% static 'images/male-icon.svg' %}" alt="Icone macho">
-                                {% else %}
-                                    <img class="float-right" style="max-width: 24px" src="{% static 'images/female-icon.svg' %}" alt="Icone macho">
-                                {% endif %}
-                            </div>
-                            <div>    
-                                <p class="card_text porte">{{Animal.get_porte_display}}</p>  
-                            </div>
-                            <div class="text-center">
-                                <a href="{% url 'descricao' Animal.id %}" class="btn btn btn-warning">VER MAIS</a>
-                            </div>                            
-                        </div>
-                    </div>
-                </li>
-            {% endfor %}
-        </ul>
-        {% else %}
-        <p>Não há animais para exibir </p>
-        {% endif %}
-    </div>
-    
+<div class="d-flex justify-content-center">
+  <nav aria-label="Page navigation example">
+    <ul class="pagination">
+      {% if animais.has_previous %}
+      <li class="page-ite">
+        <a class="page-link" href="?page=1">Primeira</a>
+      </li>
+
+      <li class="page-item">
+        <a class="page-link" href="?page={{ animais.previous_page_number }}"
+          >Anterior</a
+        >
+      </li>
+
+      {% endif %} {% if animais.has_next %}
+      <li class="page-item active " aria-current="page">
+        <a class="page-link" href="?page={{ animais.next_page_number }}"
+          >2 <span class="sr-only">(current)</span></a
+        >
+      </li>
+      <li class="page-item">
+        <a class="page-link" href="?page={{ animais.paginator.num_pages }}"
+          >Ultima</a
+        >
+      </li>
+      {% endif %}
+    </ul>
+  </nav>
+</div>
+
+<div class="container">
+  <p class="text-center lead font-weight-bold texto-cor" style="font-size:35px">
+    Últimas adoções registradas
+  </p>
+  {% if animaisAdotados %}
+  <ul class="cards">
+    {% for Animal in animaisAdotados %}
+    <li class="cards_item">
+      <div class="card">
+        {% if Animal.adotado%}
+        <div class="ribbon-wrapper">
+          <div class="ribbon">Adotado</div>
+        </div>
+        {% endif %} {% with Animal.imagens.all|first as img %}
+        <div class="card_image">
+          <a href="{% url 'descricao' Animal.id %}">
+            <img src="{{img.imagem.url}}" class="img-thumbnail" />
+          </a>
+        </div>
+        {% endwith %}
+        <div class="card_content">
+          <div class="card_desc">
+            <h2 class="card_title float-left ">{{Animal.nome}}</h2>
+            {% if Animal.sexo == 1 %}
+            <img
+              class="float-right"
+              style="max-width: 22px"
+              src="{% static 'images/male-icon.svg' %}"
+              alt="Icone macho"
+            />
+            {% else %}
+            <img
+              class="float-right"
+              style="max-width: 24px"
+              src="{% static 'images/female-icon.svg' %}"
+              alt="Icone macho"
+            />
+            {% endif %}
+          </div>
+          <div>
+            <p class="card_text porte">{{Animal.get_porte_display}}</p>
+          </div>
+          <div class="text-center">
+            <a
+              href="{% url 'descricao' Animal.id %}"
+              class="btn btn btn-warning"
+              >VER MAIS</a
+            >
+          </div>
+        </div>
+      </div>
+    </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+  <p>Não há animais para exibir</p>
+  {% endif %}
+</div>
+
 {% endblock %}

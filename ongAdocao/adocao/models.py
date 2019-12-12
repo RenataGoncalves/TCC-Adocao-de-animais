@@ -9,6 +9,7 @@ class Animal(models.Model):
     descricao = models.CharField(max_length=255, null=False, blank=False)
     historia = models.TextField(null=False, blank=False)
     adotado = models.BooleanField(default=False)
+    data =  models.DateTimeField(default=now, editable=False)
     macho = 1
     femea = 2
     gato = 3
@@ -17,6 +18,7 @@ class Animal(models.Model):
     medio = 6
     grande = 7
     nao_informado = 8
+    
     escolhasS = (
         (macho, 'Macho'),
         (femea, 'Femea'),
@@ -33,6 +35,8 @@ class Animal(models.Model):
         (grande, 'Grande'),
         (nao_informado, 'Nao informado')
     )
+    
+
     sexo = models.IntegerField(choices=escolhasS, default=8)
     especie = models.IntegerField(choices=escolhasR, default=8)
     porte = models.IntegerField(choices=escolhasP, default=8)
@@ -40,33 +44,9 @@ class Animal(models.Model):
 
     def __str__(self):
         return f"{self.nome} ({self.descricao})"
-
-    # def map_sexo(self):
-    #     if self.sexo == self.macho:
-    #         return "Macho"
-    #     elif self.sexo == self.femea:
-    #         return "Fêmea"
-    #     elif self.sexo == self.nao_informado:
-    #         return "Não informado"
-
-    # def map_porte(self):
-    #         if self.porte == self.pequeno:
-    #             return "Pequeno"
-    #         elif self.porte == self.medio:
-    #             return "Médio"
-    #         elif self.porte == self.grande:
-    #             return "Grande"
-    #         elif self.porte == self.nao_informado:
-    #             return "Não informado"
-
-
+    
     class Meta:
-        verbose_name_plural = 'Animais'
-
-    class Meta:
-       ordering = ['nome']
-
-
+        ordering = ['-data']
 
 class Pessoa(models.Model):
     nome = models.CharField(

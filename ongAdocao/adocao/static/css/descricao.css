@@ -42,3 +42,16 @@ ul.info-gerais li{
   background-image: url(../images/check-mark.png) ;
   padding-left: 20px;
 }
+
+.cor-fonte{
+  color: white;
+}
+
+
+/*pagina ajuda*/
+
+.displayed {
+  display: block;
+  margin-left: auto;
+  margin-right: auto ;
+}

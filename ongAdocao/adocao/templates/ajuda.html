@@ -1,0 +1,48 @@
+{% extends 'base.html' %} {% load staticfiles %} {% block bloco %}
+
+<div class="img-apresentacao">
+        <div class="container">
+          <p>Nossos peludos estão ansiosos à espera de um lar!</p>
+          <a href="{% url 'ajuda' %}" class="btn-ajudar"><strong>QUERO AJUDAR</strong></a>
+          <a href="{% url 'index' %}" class="btn-adotar"><strong>ADOTAR</strong></a>
+        </div>
+</div>
+<div class="container p-5">
+
+        <p
+        class="pt-3 lead text-center font-weight-bold texto-cor"
+        style="font-size:35px"
+      >
+       Ajude-nos
+    <div class="row">
+        <div class="col justify-content-md-center">
+            <img
+            class="justify-content-md-center displayed "
+            style="max-width: 250px"
+            src="{% static 'images/adoption.svg' %}"
+            alt="Icone macho"
+            />
+            <p class="text-center pt-3">SEJA UM VOLUNTÁRIO</p>
+        </div>
+        <div class="col">
+            <img
+            class="justify-content-md-center displayed "
+            style="max-width: 250px"
+            src="{% static 'images/donation.svg' %}"
+            alt="Icone macho"
+            />
+            <p class="text-center pt-3">DOE</p>
+        </div>
+        <div class="col">
+            <img
+            class="justify-content-md-center text-center displayed "
+            style="max-width: 260px"
+            src="{% static 'images/home.svg' %}"
+            alt="Icone macho"
+            />
+            <p class="text-center">ADOTE</p>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

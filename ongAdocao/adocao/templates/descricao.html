@@ -68,7 +68,7 @@
         </div>
       </div>
 
-      <div class="col-md-4">
+      <div class="col-md-4 p-3">
         <div class="pet-dados" style="padding: 20px;margin-bottom: 20px; background-color: white;">
           <h3>Informações Gerais</h3>
           
@@ -77,11 +77,36 @@
             <li>Sexo: {{ animal.get_sexo_display }}</li>
             <li>Porte: {{ animal.get_porte_display }}</li>
           </ul>
-          <div class="text-center p-4">
-            <a href="https://www.facebook.com/OngAdocaoVilhena" class="btn btn btn-warning">QUERO ADOTAR</a>
-          </div>
+
+          <!-- Botão para acionar modal -->
+            <div class="text-center p-2">
+              <a href="https://www.facebook.com/OngAdocaoVilhena" class="btn btn btn-warning" data-toggle="modal" data-target="#modalExemplo">QUERO ADOTAR</a>
+            </div>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="modalExemplo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Para mais Informações</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+            <span aria-hidden="true">&times;</span>
+          </button>
         </div>
-        <div class="pet-dados" style="padding: 20px;margin-bottom: 20px; background-color: white;">
+        <div class="modal-body">
+          Entre em contato com o número: 984645703 <br>
+          Ou acesse nossa página no facebook.
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+          <a href="https://www.facebook.com/OngAdocaoVilhena" class="btn btn-warning">Ir Facebook</a>
+        </div>
+      </div>
+    </div>
+  </div>
+          
+        </div>
+        <div class="pet-dados" style="padding: 20px;margin-bottom: 20px; background-color: blue;">
           <h3>Cuidados veterinários</h3>
           <ul class="info-gerais"> 
             <li>Castrado</li>

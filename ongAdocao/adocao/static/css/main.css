@@ -201,7 +201,7 @@
       font-size: 1.2rem;
     }
     .img-apresentacao{
-      height: 50vh;
+      height: 80vh;
     }
   }
     
@@ -214,10 +214,11 @@
 
   @media (max-width: 767px){
     .img-apresentacao p{
-      font-size: 30px!important;
+      font-size: 25px!important;
     }
     .img-apresentacao{
-      height: 50vh;
+      height: 60vh;
+      padding: 5em;
     }.card_text{
       font-size: 01.1rem;
     } 
@@ -230,7 +231,7 @@
     }
   }
   */
-@media screen and (max-width:480px){
+@media screen and (max-width:525px){
   .img-apresentacao{
     padding: 0 !important;
   }
@@ -244,7 +245,8 @@
     border-radius: .6em;
   } 
   .btn-ajudar{
-    padding: 0.8em 1em;
+    padding: 0.8em .5em;
     border-radius: .6em;
   }
 }
+

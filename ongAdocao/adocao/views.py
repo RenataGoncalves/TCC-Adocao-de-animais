@@ -22,3 +22,7 @@ def index(request):
 	page = request.GET.get('page')
 	posts = paginator.get_page(page)
 	return render(request, 'index.html',{'animais':posts,'animaisAdotados':adotados, 'imagens':imagens})
+
+
+def ajuda(request):
+ 	return render(request, 'ajuda.html')

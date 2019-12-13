@@ -2,8 +2,8 @@
 <div class="img-apresentacao">
   <div class="container">
     <p>Nossos peludos estão ansiosos à espera de um lar!</p>
-    <a href="#" class="btn-ajudar"><strong>QUERO AJUDAR</strong></a>
-    <a href="#" class="btn-adotar"><strong>ADOTAR</strong></a>
+    <a href="{% url 'ajuda' %}" class="btn-ajudar"><strong>QUERO AJUDAR</strong></a>
+    <a href="#adotar" class="btn-adotar"><strong>ADOTAR</strong></a>
   </div>
 </div>
 
@@ -72,28 +72,13 @@
 <div class="d-flex justify-content-center">
   <nav aria-label="Page navigation example">
     <ul class="pagination">
-      {% if animais.has_previous %}
-      <li class="page-ite">
-        <a class="page-link" href="?page=1">Primeira</a>
-      </li>
-
-      <li class="page-item">
-        <a class="page-link" href="?page={{ animais.previous_page_number }}"
-          >Anterior</a
-        >
-      </li>
-
+      {% if animais.has_previous %}        
+        <li class="page-ite"><a class="page-link" href="?page=1">Primeira</a></li>
+        <li class="page-item"><a class="page-link" href="?page={{ animais.previous_page_number }}">Anterior</a></li>
       {% endif %} {% if animais.has_next %}
-      <li class="page-item active " aria-current="page">
-        <a class="page-link" href="?page={{ animais.next_page_number }}"
-          >2 <span class="sr-only">(current)</span></a
-        >
+      <li class="page-item active " aria-current="page"><a class="page-link" href="?page={{ animais.next_page_number }}">2 <span class="sr-only">(current)</span></a>
       </li>
-      <li class="page-item">
-        <a class="page-link" href="?page={{ animais.paginator.num_pages }}"
-          >Ultima</a
-        >
-      </li>
+      <li class="page-item"><a class="page-link" href="?page={{ animais.paginator.num_pages }}">Ultima</a></li>
       {% endif %}
     </ul>
   </nav>
